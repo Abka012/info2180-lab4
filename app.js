@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
   const searchInput = document.getElementById('searchInput');
@@ -60,6 +59,3 @@ document.addEventListener('DOMContentLoaded', () => {
   searchButton.addEventListener('click', handleSearch);
   searchInput.addEventListener('keypress', handleKeyPress);
 });
-=======
->>>>>>> ba2054f87df1d55909ff40c17ec3d95a298a9cb3
-
