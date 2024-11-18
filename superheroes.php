@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 header('Content-Type: text/plain; charset=UT-8');
+=======
+>>>>>>> ba2054f87df1d55909ff40c17ec3d95a298a9cb3
 
 $superheroes = [
   [
@@ -63,6 +66,7 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
+<<<<<<< HEAD
 // Utility function to sanitize input
 function sanitizeInput($input) {
     return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
@@ -120,3 +124,13 @@ function renderSuperheroList($superheroes) {
     return "<ul class='superhero-list'>" . implode('', $listItems) . "</ul>";
 }
 ?>
+=======
+
+?>
+
+<ul>
+<?php foreach ($superheroes as $superhero): ?>
+  <li><?= $superhero['alias']; ?></li>
+<?php endforeach; ?>
+</ul>
+>>>>>>> ba2054f87df1d55909ff40c17ec3d95a298a9cb3
