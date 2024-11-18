@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avengers Character Search</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <h1>Avengers Character Search</h1>
+    </header>
+
+    <!-- Search Section -->
+    <main class="search-section">
+      <h4>Search by Full Name or Alias</h4>
+      <div class="search-bar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="e.g., Captain America or Steve Rogers"
+          aria-label="Search for a character"
+        />
+        <button id="searchButton">Search</button>
+      </div>
+    </main>
+
+    <!-- Results Section -->
+    <section class="results">
+      <div id="result">
+        <h2>Result</h2>
+        <hr class="separator" />
+        <div id="output"></div>
+      </div>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/plain; charset=UT-8');
 
 $superheroes = [
   [
@@ -62,11 +63,60 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
+// Utility function to sanitize input
+function sanitizeInput($input) {
+    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+}
 
+// Utility function to search for a superhero
+function searchSuperhero($superheroes, $query) {
+    $query = strtolower($query);
+    foreach ($superheroes as $hero) {
+        if (strtolower($hero['name']) === $query || strtolower($hero['alias']) === $query) {
+            return $hero;
+        }
+    }
+    return null;
+}
+
+// Get and sanitize the query parameter
+$query = isset($_GET['query']) ? sanitizeInput($_GET['query']) : '';
+
+// Display superhero details or a list
+if ($query !== '') {
+    $hero = searchSuperhero($superheroes, $query);
+
+    if ($hero) {
+        echo renderSuperheroDetails($hero);
+    } else {
+        echo renderNotFound();
+    }
+} else {
+    echo renderSuperheroList($superheroes);
+}
+
+// Function to render superhero details
+function renderSuperheroDetails($hero) {
+    return "
+        <div class='superhero-details'>
+            <h3>" . htmlspecialchars($hero['alias'], ENT_QUOTES, 'UTF-8') . "</h3>
+            <h4>A.K.A " . htmlspecialchars($hero['name'], ENT_QUOTES, 'UTF-8') . "</h4>
+            <p>" . htmlspecialchars($hero['biography'], ENT_QUOTES, 'UTF-8') . "</p>
+        </div>
+    ";
+}
+
+// Function to render the "not found" message
+function renderNotFound() {
+    return "<div class='not-found'>SUPERHERO NOT FOUND</div>";
+}
+
+// Function to render the superhero list
+function renderSuperheroList($superheroes) {
+    $listItems = array_map(function($hero) {
+        return "<li>" . htmlspecialchars($hero['alias'], ENT_QUOTES, 'UTF-8') . "</li>";
+    }, $superheroes);
+
+    return "<ul class='superhero-list'>" . implode('', $listItems) . "</ul>";
+}
 ?>
-
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
